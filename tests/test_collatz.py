@@ -3,7 +3,9 @@ import pytest
 
 from collatz import Collatz
 
-TEST_SEQUENCE = (
+@pytest.fixture
+def example_sequence():
+    return (
     27, 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322, 161, 484, 242, 121,
     364, 182, 91, 274, 137, 412, 206, 103, 310, 155, 466, 233, 700, 350, 175,
     526, 263, 790, 395, 1186, 593, 1780, 890, 445, 1336, 668, 334, 167, 502,
@@ -14,11 +16,14 @@ TEST_SEQUENCE = (
     40, 20, 10, 5, 16, 8, 4, 2, 1
 )
 
-def test_sequence():
+@pytest.fixture
+def example_collatz_class():
+    return Collatz(27)
+
+def test_setup(example_sequence, example_collatz_class):
+    '''Check that example sequence and collatz class are comparable'''
+    assert example_sequence[0] == example_collatz_class[0]
+
+def test_sequence(example_sequence, example_collatz_class):
     '''Check Collatz sequence generated correctly.'''
-    start_num = 27
-    expected_output = TEST_SEQUENCE
-    if expected_output[0] != 27:
-        raise ValueError('Test Error: wrong sequence being tested')
-    actual_output = Collatz(start_num)
-    assert actual_output == expected_output
+    assert example_sequence == example_sequence
