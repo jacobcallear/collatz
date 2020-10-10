@@ -1,9 +1,11 @@
 '''Investigate the Collatz Conjecture.
 '''
+from functools import total_ordering
 
 __version__ = '0.0'
 __author = 'Jacob'
 
+@total_ordering
 class Collatz:
     '''Create a Collatz sequence starting from any whole number > 0.'''
     # ==============================
@@ -46,6 +48,11 @@ class Collatz:
 
     def __eq__(self, other):
         if self._sequence == other:
+            return True
+        return False
+
+    def __lt__(self, other):
+        if self._sequence < other:
             return True
         return False
     

@@ -51,3 +51,12 @@ def test_error_raising():
     with pytest.raises(ValueError):
         Collatz(0)
         Collatz(-1)
+
+def test_ordering():
+    '''Test comparison ordering as for tuples.'''
+    assert Collatz(3) > Collatz(2) > Collatz(1)
+    assert Collatz(3) >= Collatz(2) >= Collatz(1)
+    assert Collatz(10) < Collatz(100) < Collatz(1000)
+    assert Collatz(10) <= Collatz(100) <= Collatz(1000)
+    assert Collatz(178) == Collatz(178) != Collatz(177)
+    assert Collatz(203) >= Collatz(203) <= Collatz(203)
