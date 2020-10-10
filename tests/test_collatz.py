@@ -27,3 +27,15 @@ def test_setup(example_sequence, example_collatz_class):
 def test_sequence(example_sequence, example_collatz_class):
     '''Check Collatz sequence generated correctly.'''
     assert example_sequence == example_sequence
+
+def test_convert_to_scientific_form():
+    # Test imprecise scientific form
+    number = 852074902357402935742905784029357842930574
+    expected_output = '~8.520749 * 10^41'
+    actual_output = Collatz.convert_to_scientific_form(number)
+    assert expected_output == actual_output
+    # Test precise scientific form
+    number = 48237490000000000000000000000000000000000000000000
+    expected_output = '4.823749 * 10^49'
+    actual_output = Collatz.convert_to_scientific_form(number)
+    assert expected_output == actual_output
