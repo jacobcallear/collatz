@@ -70,4 +70,4 @@ class Collatz:
         if coefficient.startswith('10.'):
             coefficient = coefficient.replace('10.', '1.', 1)
             exponent += 1
-        return f'{precision}{coefficient} * 10^{exponent}'
+        return f'{precision}{coefficient} * 10**{exponent}'
