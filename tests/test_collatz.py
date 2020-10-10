@@ -29,6 +29,7 @@ def test_sequence(example_sequence, example_collatz_class):
     assert example_sequence == example_sequence
 
 def test_convert_to_scientific_form():
+    '''Test method converts to scientific form with 6 decimal places'''
     # Test imprecise scientific form
     number = 852074902357402935742905784029357842930574
     expected_output = '~8.520749 * 10^41'
@@ -39,3 +40,14 @@ def test_convert_to_scientific_form():
     expected_output = '4.823749 * 10^49'
     actual_output = Collatz.convert_to_scientific_form(number)
     assert expected_output == actual_output
+
+def test_error_raising():
+    '''Check Value and Type errors are raised when first term is not an integer > 0'''
+    for wrong_input_type in ('string', None, [1], (1,), {}):
+        with pytest.raises(TypeError):
+            Collatz(wrong_input_type)
+    with pytest.raises(ValueError):
+        Collatz(1.1)
+    with pytest.raises(ValueError):
+        Collatz(0)
+        Collatz(-1)
