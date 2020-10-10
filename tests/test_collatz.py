@@ -26,7 +26,7 @@ def test_setup(example_sequence, example_collatz_class):
 
 def test_sequence(example_sequence, example_collatz_class):
     '''Check Collatz sequence generated correctly.'''
-    assert example_sequence == example_sequence
+    assert example_sequence == example_collatz_class
 
 def test_convert_to_scientific_form():
     '''Test method converts to scientific form with 6 decimal places'''
