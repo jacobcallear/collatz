@@ -5,12 +5,19 @@ __version__ = '0.0'
 __author = 'Jacob'
 
 class Collatz:
-    '''Create a Collatz sequence starting from any whole number.'''
+    '''Create a Collatz sequence starting from any whole number > 0.'''
     def __init__(self, start_number):
+        if not isinstance(start_number, (int, float)):
+            raise TypeError('First term must be a whole number (int or float)')
+        if isinstance(start_number, float) and not start_number.is_integer():
+            raise ValueError('First term must be a whole number')
+        if start_number < 1:
+            raise ValueError('First term must be > 0')
         self.sequence = tuple(self._generate_sequence(start_number))
     
     @staticmethod
     def _generate_sequence(num):
+        num = int(num)
         yield num
         while num != 1:
             if num % 2:
