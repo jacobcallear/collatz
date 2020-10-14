@@ -22,11 +22,15 @@ This module allows you to test this conjecture.
 
 ```python
 >>> from collatz import Collatz
->>> c = Collatz(10**999 - 1)
->>> c
-Collatz(first_term=~1.000000 * 10^999, length=31713)
->>> c[-1]
-1
->>> Collatz.convert_to_scientific_form(c[0])
-'~1.000000 * 10**999'
+>>> collatz_sequence = Collatz(100)
+>>> collatz_sequence
+Collatz([100, 50, 25, ..., 16, 8, 4, 2, 1])
+>>> print(collatz_sequence)
+Collatz sequence starting from 100 with 26 terms
+>>> last_five_terms = collatz_sequence[-5:]
+>>> last_five_terms
+(16, 8, 4, 2, 1)
+>>> list(collatz_sequence)
+[100, 50, 25, 76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 20,
+ 10, 5, 16, 8, 4, 2, 1]
 ```
