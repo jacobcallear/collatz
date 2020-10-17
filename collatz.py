@@ -11,15 +11,20 @@ class Collatz(tuple):
     # ==============================
     # INTERNAL METHODS
     def __new__(cls, start_number):
-        if not isinstance(start_number, (int, float)):
-            raise TypeError('First term must be a whole number (int or float)')
-        if isinstance(start_number, float) and not start_number.is_integer():
-            raise ValueError('First term must be a whole number')
-        if start_number < 1:
-            raise ValueError('First term must be > 0')
+        cls._check_valid_first_term(start_number)
         sequence = cls._generate_sequence(start_number)
         return super().__new__(cls, sequence)
     
+    @staticmethod
+    def _check_valid_first_term(num):
+        '''Raise error if given start number is an invalid type or value.'''
+        if not isinstance(num, (int, float)):
+            raise TypeError('First term must be a whole number (int or float)')
+        if isinstance(num, float) and not num.is_integer():
+            raise ValueError('First term must be a whole number')
+        if num < 1:
+            raise ValueError('First term must be > 0')
+
     @staticmethod
     def _generate_sequence(num):
         num = int(num)
