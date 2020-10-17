@@ -44,7 +44,7 @@ class Collatz(tuple):
             return ', '.join(scientific_form_sequence)
         # ----------
         if len(self) < 10:
-            abbreviated_sequence = str(self).strip('()')
+            abbreviated_sequence = str(tuple(self)).strip('()')
         else:
             first_three_terms = sequence_to_string(self[:3])
             last_five_terms = sequence_to_string(self[-5:])
