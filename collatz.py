@@ -6,18 +6,19 @@ __version__ = '0.0'
 __author__ = 'Jacob'
 
 @total_ordering
-class Collatz:
+class Collatz(tuple):
     '''Create a Collatz sequence starting from any whole number > 0.'''
     # ==============================
     # INTERNAL METHODS
-    def __init__(self, start_number):
+    def __new__(cls, start_number):
         if not isinstance(start_number, (int, float)):
             raise TypeError('First term must be a whole number (int or float)')
         if isinstance(start_number, float) and not start_number.is_integer():
             raise ValueError('First term must be a whole number')
         if start_number < 1:
             raise ValueError('First term must be > 0')
-        self._sequence = tuple(self._generate_sequence(start_number))
+        sequence = cls._generate_sequence(start_number)
+        return super().__new__(cls, sequence)
     
     @staticmethod
     def _generate_sequence(num):
@@ -39,39 +40,20 @@ class Collatz:
             )
             return ', '.join(scientific_form_sequence)
         # ----------
-        if len(self._sequence) < 10:
-            abbreviated_sequence = str(self._sequence).strip('()')
+        if len(self) < 10:
+            abbreviated_sequence = str(self).strip('()')
         else:
-            first_three_terms = sequence_to_string(self._sequence[:3])
-            last_five_terms = sequence_to_string(self._sequence[-5:])
+            first_three_terms = sequence_to_string(self[:3])
+            last_five_terms = sequence_to_string(self[-5:])
             abbreviated_sequence = f'{first_three_terms}, ..., {last_five_terms}'
         return f'{type(self).__name__}([{abbreviated_sequence}])'
 
     def __str__(self):
-        first_term = self.convert_to_scientific_form(self._sequence[0],
+        first_term = self.convert_to_scientific_form(self[0],
                                                      decimal_places=2)
-        length = self.convert_to_scientific_form(len(self._sequence),
+        length = self.convert_to_scientific_form(len(self),
                                                      decimal_places=2)
         return f'Collatz sequence starting from {first_term} with {length} terms'
-
-    def __iter__(self):
-        return iter(self._sequence)
-    
-    def __getitem__(self, item):
-        return self._sequence[item]
-
-    def __eq__(self, other):
-        if self._sequence == other:
-            return True
-        return False
-
-    def __lt__(self, other):
-        if self._sequence < other:
-            return True
-        return False
-    
-    def __len__(self):
-        return len(self._sequence)
 
     # ==============================
     @staticmethod
