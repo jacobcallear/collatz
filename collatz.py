@@ -1,11 +1,9 @@
 '''Investigate the Collatz Conjecture.
 '''
-from functools import total_ordering
 
 __version__ = '0.0'
 __author__ = 'Jacob'
 
-@total_ordering
 class Collatz(tuple):
     '''Create a Collatz sequence starting from any whole number > 0.'''
     # ==============================
