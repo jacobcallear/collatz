@@ -1,5 +1,6 @@
 '''Investigate the Collatz Conjecture.
 '''
+from matplotlib import pyplot as plt
 
 __version__ = '0.0'
 __author__ = 'Jacob'
@@ -52,12 +53,38 @@ class Collatz(tuple):
         return f'{type(self).__name__}([{abbreviated_sequence}])'
 
     def __str__(self):
-        first_term = self.convert_to_scientific_form(self[0],
-                                                     decimal_places=2)
-        length = self.convert_to_scientific_form(len(self),
-                                                     decimal_places=2)
+        first_term = self.convert_to_scientific_form(self[0], decimal_places=2)
+        length = self.convert_to_scientific_form(len(self), decimal_places=2)
         return f'Collatz sequence starting from {first_term} with {length} terms'
 
+    # ==============================
+    def plot(self, linear=True):
+        '''Plot sequence.
+        
+        Args:
+            linear (bool): If True, sets y-axis scale to 'linear'; otherwise uses
+                'log' scale.
+        '''
+        colour = 'g' if linear else 'r'
+        try:
+            plt.plot(self, colour)
+        except OverflowError:
+            print('ERROR: Sequence too large to plot')
+            return
+        # Axis limits
+        plt.xlim(0)
+        y_min = 0 if linear else 1
+        plt.ylim(y_min)
+        # Labels
+        first_term = self.convert_to_scientific_form(self[0], threshold=11, decimal_places=3)
+        plt.title(f'Collatz sequence starting from {first_term}')
+        plt.xlabel('Step')
+        plt.ylabel('nth term')
+        # Scale
+        scale = 'linear' if linear else 'log'
+        plt.yscale(scale)
+        plt.show()
+    
     # ==============================
     @staticmethod
     def convert_to_scientific_form(number, decimal_places=6, threshold=10):
