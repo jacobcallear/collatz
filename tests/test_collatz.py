@@ -28,29 +28,22 @@ def test_sequence(example_sequence, example_collatz_class):
     '''Check Collatz sequence generated correctly.'''
     assert example_sequence == example_collatz_class
 
-def test_convert_to_scientific_form():
+@pytest.mark.parametrize('input_number, decimal_places, threshold, expected_output', [
+    (852074902357402935742905784029357842930574, 6, 0, '~8.520749 x 10^41'),
+    (48237490000000000000000000000000000000000000000000, 6, 0, '4.823749 x 10^49'),
+    (287540938670578023578420935784209357842903578420935784, 0, None,
+     '287,540,938,670,578,023,578,420,935,784,209,357,842,903,578,420,935,784')
+])
+def test_convert_to_scientific_form(input_number, decimal_places, threshold,
+                                    expected_output):
     '''Test method converts to scientific form.'''
-    # Test imprecise scientific form
-    number = 852074902357402935742905784029357842930574
-    expected_output = '~8.520749 x 10^41'
+    # Act, assert
     actual_output = Collatz.convert_to_scientific_form(
-        number,
-        decimal_places=6,
-        threshold=0)
+        input_number,
+        decimal_places=decimal_places,
+        threshold=threshold)
     assert expected_output == actual_output
-    # Test precise scientific form
-    number = 48237490000000000000000000000000000000000000000000
-    expected_output = '4.823749 x 10^49'
-    actual_output = Collatz.convert_to_scientific_form(
-        number,
-        decimal_places=6,
-        threshold=0)
-    assert expected_output == actual_output
-    # Test comma separators
-    number = 287540938670578023578420935784209357842903578420935784
-    expected_output = f'{number:,}'
-    actual_output = Collatz.convert_to_scientific_form(number, threshold=None)
-    assert expected_output == actual_output
+
 def test_error_raising():
     '''Check Errors are raised when first term is not an integer > 0.'''
     for wrong_input_type in ('string', None, [1], (1,), {}):
