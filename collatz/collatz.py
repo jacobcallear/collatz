@@ -58,14 +58,16 @@ class Collatz(tuple):
         return f'Collatz sequence starting from {first_term} with {length} terms'
 
     # ==============================
-    def plot(self, linear=True):
+    def plot(self, scale='linear'):
         '''Plot sequence.
         
         Args:
-            linear (bool): If True, sets y-axis scale to 'linear'; otherwise uses
-                'log' scale.
+            scale (str): If 'linear', uses linear y-axis scale; if 'log' uses
+                log scale.
         '''
+        linear = True if scale == 'linear' else False
         colour = 'g' if linear else 'r'
+        plt.style.use('ggplot')
         try:
             plt.plot(self, colour)
         except OverflowError:
