@@ -1,0 +1,1 @@
+from collatz.collatz import Collatz
