@@ -2,35 +2,44 @@
 
 Create, plot, and investigate Collatz sequences.
 
-## Collatz Conjecture
+## Collatz Sequence
 
-The Collatz sequence is a sequence that meets the following rules:
+A Collatz sequence can start from any positive whole number (except 0). The
+next term is decided by the following rules:
 
-1. The first term is any non-zero integer
-2. If the previous term is *even*, the next term is half the previous term
-3. If the previous term is *odd*, the next term is 3 times the previous term
+1. If the previous term is *even*, the next term is half the previous term
+2. If the previous term is *odd*, the next term is 3 times the previous term
    plus 1
 
-For example, starting with *n = 12*, we get the Collatz sequence:
+For example, starting from 12, we get the Collatz sequence:
 `12, 6, 3, 10, 5, 16, 8, 4, 2, 1`
 
-The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)
-states that for any starting value, the Collatz sequence will always reach *1*.
-This module allows you to test this conjecture.
+## Collatz Conjecture
 
-## Use
+The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)
+states that all Collatz sequences will eventually reach 1. This has not been
+proven. This module allows you to test the conjecture by making your own Collatz
+sequences.
+
+## Demo
+
+To create and plot a Collatz sequence, run a python file containing code like
+this:
 
 ```python
->>> from collatz import Collatz
->>> collatz_sequence = Collatz(100)
->>> collatz_sequence
-Collatz([100, 50, 25, ..., 16, 8, 4, 2, 1])
->>> print(collatz_sequence)
-Collatz sequence starting from 100 with 26 terms
->>> last_five_terms = collatz_sequence[-5:]
->>> last_five_terms
-(16, 8, 4, 2, 1)
->>> list(collatz_sequence)
-[100, 50, 25, 76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 20,
- 10, 5, 16, 8, 4, 2, 1]
+from collatz import Collatz
+sequence = Collatz(77031)
+print(sequence)
+sequence.plot()
+sequence.plot(scale='log')
 ```
+
+Output:
+
+```
+Collatz sequence starting from 77,031 with 351 terms
+```
+
+![Plot of a Collatz sequence starting from 77,031 with linear scale](/img/plot-77031-linear.png)
+
+![Plot of a Collatz sequence starting from 77,031 with log scale](/img/plot-77031-log.png)
