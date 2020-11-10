@@ -18,6 +18,10 @@ def plot_comparison(sequences, scale='linear'):
     plt.xlim(0)
     y_min = 0 if linear else 1
     plt.ylim(y_min)
+    # Labels
+    plt.title(f'Comparison plot of {len(sequences)} Collatz sequences')
+    plt.xlabel('Step')
+    plt.ylabel(fr'Value - $\it{{{scale}\ scale}}$')
     # Scale
     scale = 'linear' if linear else 'log'
     plt.yscale(scale)

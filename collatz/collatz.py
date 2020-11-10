@@ -81,7 +81,7 @@ class Collatz(tuple):
         first_term = self.convert_to_scientific_form(self[0], threshold=11, decimal_places=3)
         plt.title(f'Collatz sequence starting from {first_term}')
         plt.xlabel('Step')
-        plt.ylabel('nth term')
+        plt.ylabel(fr'Value - $\it{{{scale}\ scale}}$')
         # Scale
         scale = 'linear' if linear else 'log'
         plt.yscale(scale)
