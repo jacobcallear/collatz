@@ -28,12 +28,38 @@ this:
 from collatz import Collatz
 # Create a Collatz sequence starting from 77,031 (until it reaches 1)
 sequence = Collatz(77031)
-# Plot the sequence with linear y-axis scale
+# Plot the sequence
 sequence.plot()
+```
+
+![Line plot of a Collatz sequence starting from 77,031 with linear scale](/img/plot-77031-linear.png)
+
+You can change the scale of the y-axis:
+
+```python
 # Plot the sequence with log y-axis scale
 sequence.plot(scale='log')
 ```
 
-![Plot of a Collatz sequence starting from 77,031 with linear scale](/img/plot-77031-linear.png)
+![Line plot of a Collatz sequence starting from 77,031 with log scale](/img/plot-77031-log.png)
 
-![Plot of a Collatz sequence starting from 77,031 with log scale](/img/plot-77031-log.png)
+To compare multiple Collatz sequences on a single plot:
+
+```python
+from collatz import Collatz, plot_comparison
+sequences = [Collatz(1017), Collatz(1016), Collatz(1015)]
+plot_comparison(sequences)
+```
+
+![Line plot of three Collatz sequences with linear scale](/img/plot-comparison-3-linear.png)
+
+As above, but using log scale:
+
+```python
+from collatz import Collatz, plot_comparison
+sequence_1 = Collatz(7579309213675935)
+sequence_2 = Collatz(93571393692802302)
+plot_comparison([sequence_1, sequence_2], scale='log')
+```
+
+![Line plot of two Collatz sequences with log scale](/img/plot-comparison-2-log.png)
