@@ -2,7 +2,7 @@
 
 Create, plot, and investigate Collatz sequences.
 
-## Collatz Sequence
+## Collatz Sequences
 
 A Collatz sequence can start from any positive whole number (except 0). The
 next term is decided by the following rules:
@@ -13,8 +13,6 @@ next term is decided by the following rules:
 
 For example, starting from 12, we get the Collatz sequence:
 `12, 6, 3, 10, 5, 16, 8, 4, 2, 1`
-
-## Collatz Conjecture
 
 The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)
 states that all Collatz sequences will eventually reach 1. This has not been
@@ -28,16 +26,12 @@ this:
 
 ```python
 from collatz import Collatz
+# Create a Collatz sequence starting from 77,031 (until it reaches 1)
 sequence = Collatz(77031)
-print(sequence)
+# Plot the sequence with linear y-axis scale
 sequence.plot()
+# Plot the sequence with log y-axis scale
 sequence.plot(scale='log')
-```
-
-Output:
-
-```
-Collatz sequence starting from 77,031 with 351 terms
 ```
 
 ![Plot of a Collatz sequence starting from 77,031 with linear scale](/img/plot-77031-linear.png)
