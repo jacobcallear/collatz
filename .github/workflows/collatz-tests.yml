@@ -1,4 +1,4 @@
-name: collatz-tests
+name: Python lints and tests
 
 on: [push]
 
