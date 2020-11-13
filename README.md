@@ -1,5 +1,7 @@
 # Collatz
 
+![Python tests and lints status](https://github.com/jacobcallear/collatz/workflows/tests/badge.svg)
+
 Create, plot, and investigate Collatz sequences.
 
 ## Collatz Sequences
