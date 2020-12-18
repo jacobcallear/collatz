@@ -5,22 +5,10 @@ import operator
 import pytest
 
 from collatz import Collatz
-from tests.example_sequences import (
-    example_sequence_1, example_sequence_2, example_sequence_3,
-    example_sequence_4, example_sequence_5, example_sequence_6,
-    example_sequence_7, example_sequence_8, example_sequence_9,
-    example_sequence_10, example_sequence_27, example_sequence_97,
-    example_sequence_77031, example_sequence_1048576
-)
+from tests.example_sequences import example_sequences
 
 
-@pytest.mark.parametrize('example_sequence', [
-    example_sequence_1, example_sequence_2, example_sequence_3,
-    example_sequence_4, example_sequence_5, example_sequence_6,
-    example_sequence_7, example_sequence_8, example_sequence_9,
-    example_sequence_10, example_sequence_27, example_sequence_97,
-    example_sequence_77031, example_sequence_1048576
-])
+@pytest.mark.parametrize('example_sequence', example_sequences)
 def test_generate_sequences(example_sequence):
     '''Test generated collatz sequences are correct for a few first terms.'''
     first_term = example_sequence[0]
