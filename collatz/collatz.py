@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt
 __version__ = '0.0'
 __author__ = 'Jacob'
 
+
 class Collatz(tuple):
     '''Create a Collatz sequence starting from any whole number > 0.'''
     # ==============================
@@ -13,7 +14,7 @@ class Collatz(tuple):
         cls._check_valid_first_term(start_number)
         sequence = cls._generate_sequence(start_number)
         return super().__new__(cls, sequence)
-    
+
     @staticmethod
     def _check_valid_first_term(num):
         '''Raise error if given start number is an invalid type or value.'''
@@ -60,7 +61,7 @@ class Collatz(tuple):
     # ==============================
     def plot(self, scale='linear'):
         '''Plot sequence.
-        
+
         Args:
             scale (str): If 'linear', uses linear y-axis scale; if 'log' uses
                 log scale.
@@ -86,12 +87,12 @@ class Collatz(tuple):
         scale = 'linear' if linear else 'log'
         plt.yscale(scale)
         plt.show()
-    
+
     # ==============================
     @staticmethod
     def convert_to_scientific_form(number, decimal_places=6, threshold=10):
         '''Convert a positive integer to scientific form or add comma separators.
-        
+
         Doesn't raise OverflowError for large numbers, unlike f'{:e}'
 
         Args:
