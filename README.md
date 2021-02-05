@@ -65,3 +65,15 @@ plot_comparison([sequence_1, sequence_2], scale='log')
 ```
 
 ![Line plot of two Collatz sequences with log scale](/img/plot-comparison-2-log.png)
+
+## Installation
+
+1. Ensure you have [Python](https://www.python.org/downloads/) >= 3.6 installed
+2. [Download](https://github.com/jacobcallear/collatz/archive/master.zip)
+   and unzip this repository
+3. In the terminal, `cd` into the `collatz/collatz` folder
+4. Run the following command:
+
+   ```bash
+   pip install .
+   ```

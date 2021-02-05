@@ -1,3 +1,6 @@
+# Top level folders
 /.vscode/
 /venv/
+# Other folders
 __pycache__/
+*.egg-info/
