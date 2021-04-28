@@ -6,7 +6,7 @@ from collatz import Collatz
 
 def plot_comparison(sequences, scale='linear'):
     '''Plot each sequence in sequences on the same plot.'''
-    linear = True if scale == 'linear' else False
+    linear = scale == 'linear'
     plt.style.use('ggplot')
     plotted_sequences = 0
     for sequence in sequences:

@@ -66,7 +66,7 @@ class Collatz(tuple):
             scale (str): If 'linear', uses linear y-axis scale; if 'log' uses
                 log scale.
         '''
-        linear = True if scale == 'linear' else False
+        linear = scale == 'linear'
         colour = 'g' if linear else 'r'
         plt.style.use('ggplot')
         try:
